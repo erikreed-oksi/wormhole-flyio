@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for wormhole-flyio on 2026-11-10T23:44:04Z
+# fly.toml app configuration file generated for wormhole-flyio on 2026-11-10T23:48:16Z
 #
 # See https://docs.fly.io/reference/configuration for information about how to use this file.
 #
@@ -10,7 +10,7 @@ primary_region = 'lax'
   auto_start_machines = false
   auto_stop_machines = 'stop'
   force_https = true
-  internal_port = 8001
+  internal_port = 4001
   min_machines_running = 0
   processes = ['app']
 
