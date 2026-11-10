@@ -1,5 +1,5 @@
 # Change this to a globally unique name, and use that same name with apps create.
-app = "replace-me-wormhole-relay"
+app = "wormhole-flyio"
 primary_region = "lax"
 kill_signal = "SIGTERM"
 kill_timeout = 30
