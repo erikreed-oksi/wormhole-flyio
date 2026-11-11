@@ -10,8 +10,12 @@ RUN groupadd --system --gid 10001 relay \
 WORKDIR /app
 COPY requirements.txt ./
 RUN python -m pip install -r requirements.txt \
-    && twist transitrelay --help >/dev/null
+    && twist transitrelay --help >/dev/null \
+    && twist wormhole-mailbox --help >/dev/null
 
-USER relay
-EXPOSE 4001/tcp
-CMD ["twist", "--log-format=text", "transitrelay", "--port=tcp:4001:interface=0.0.0.0"]
+COPY server.tac ./
+
+# server.tac initializes the mounted data directory and drops to UID/GID 10001
+# before constructing either service.
+EXPOSE 4000/tcp 4001/tcp
+CMD ["twistd", "--nodaemon", "--logfile=-", "--pidfile=", "--python=/app/server.tac"]
