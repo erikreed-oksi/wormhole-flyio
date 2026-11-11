@@ -6,13 +6,15 @@
 app = 'wormhole-flyio'
 primary_region = 'lax'
 
-[http_service]
-  auto_start_machines = false
-  auto_stop_machines = 'stop'
-  force_https = true
+[[services]]
+  protocol = "tcp"
   internal_port = 4001
-  min_machines_running = 0
-  processes = ['app']
+  auto_stop_machines = "off"
+  auto_start_machines = true
+
+  [[services.ports]]
+    port = 4001
+    handlers = []
 
 [[vm]]
   cpu_kind = 'shared'
