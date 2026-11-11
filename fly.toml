@@ -3,7 +3,7 @@
 # See https://docs.fly.io/reference/configuration for information about how to use this file.
 #
 
-app = 'wormhole-flyio'
+app = 'erik-reed-wormhole'
 primary_region = 'lax'
 
 [[services]]
@@ -15,6 +15,17 @@ primary_region = 'lax'
   [[services.ports]]
     port = 4001
     handlers = []
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 4000
+  auto_stop_machines = "off"
+  auto_start_machines = true
+
+  [[services.ports]]
+    port = 4000
+    handlers = ["http"]
+    force_https = false
 
 [[vm]]
   cpu_kind = 'shared'
